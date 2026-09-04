@@ -13,11 +13,8 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
   // your existing JSX stays down here
 
 const HotCollections = () => {
-
-
-
 const [hotCollections, setHotCollections] = useState([]);
-
+const [loading, setLoading] = useState(true);
 async function fetchHotCollections() {
   const response = await fetch(
     "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
@@ -42,11 +39,16 @@ useEffect(() => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>Hot Collections</h2>
+              <h2 data-aos="zoom-in" data-aos-duration="700">
+                Hot Collections</h2>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
 
+         
+         
+         
+         
           <OwlCarousel className="owl-theme" 
           loop
           data-aos="fade-up"
@@ -61,14 +63,8 @@ useEffect(() => {
             572: { items: 2 },
              992: { items: 3 },
              1200: { items: 4 },
-          }}></OwlCarousel>
-
-
-
-
-
-
-
+             }}>
+      
           {hotCollections.map((collection, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft_coll">
@@ -91,7 +87,8 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-          ))}
+          ))} 
+             </OwlCarousel>
         </div>
       </div>
     </section>
