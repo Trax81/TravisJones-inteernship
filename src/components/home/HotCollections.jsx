@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import React, { useEffect, useState } from "react";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
 
 
 
   // your existing JSX stays down here
 
 const HotCollections = () => {
+
 
 
 const [hotCollections, setHotCollections] = useState([]);
@@ -41,6 +46,29 @@ useEffect(() => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+
+          <OwlCarousel className="owl-theme" 
+          loop
+          data-aos="fade-up"
+          data-aos-duration="700"
+          nav
+          key={loading}
+          dots={false}
+          margin={8}
+          navText={["<", ">"]}
+          responsive={{
+            0: { items: 1 },
+            572: { items: 2 },
+             992: { items: 3 },
+             1200: { items: 4 },
+          }}></OwlCarousel>
+
+
+
+
+
+
+
           {hotCollections.map((collection, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft_coll">
