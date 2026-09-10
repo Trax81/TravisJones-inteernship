@@ -6,6 +6,10 @@ import React, { useEffect, useState } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./HotCollections.css";
 
 
 
@@ -30,11 +34,31 @@ useEffect(() => {
   fetchHotCollections();
 }, []);
 
-
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
   return (
     
-    <section id="section-collections" className="no-bottom">
+  <section id="section-collections" className="no-bottom">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
@@ -45,28 +69,14 @@ useEffect(() => {
             </div>
           </div>
 
+
          
          
          
-         
-          <OwlCarousel className="owl-theme" 
-          loop
-          data-aos="fade-up"
-          data-aos-duration="700"
-          nav
-          key={loading}
-          dots={false}
-          margin={8}
-          navText={["<", ">"]}
-          responsive={{
-            0: { items: 1 },
-            572: { items: 2 },
-             992: { items: 3 },
-             1200: { items: 4 },
-             }}>
-      
+        
+      <Slider {...settings} className="hot-collections-slider">
           {hotCollections.map((collection, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+            
               <div className="nft_coll">
                 <div className="nft_wrap">
                   <Link to="/item-details">
@@ -80,19 +90,28 @@ useEffect(() => {
                   <i className="fa fa-check"></i>
                 </div>
                 <div className="nft_coll_info">
+                  
                   <Link to="/explore">
                     <h4>{collection.title}</h4>
                   </Link>
                   <span>{collection.code}</span>
                 </div>
               </div>
-            </div>
+             
+     
           ))} 
-             </OwlCarousel>
+     </Slider>
         </div>
       </div>
+      
     </section>
   );
 };
 
+
 export default HotCollections;
+
+
+
+
+
