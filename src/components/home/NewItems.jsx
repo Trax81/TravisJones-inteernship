@@ -7,6 +7,24 @@ import nftImage from "../../images/nftImage.jpg";
 
 const NewItems = () => {
 
+const [newItems, setNewItems] = useState([]);
+const [loading, setLoading] = useState(true);
+async function fetchNewItems() {
+  const response = await fetch(
+    "https://us-central1-nft-cloud-functions.cloudfuntions.net/newItems"
+  );
+  const data = await response.json();
+console.log(data);
+setNewItems(data);
+
+useEffect(() => {
+  fetchNewItems();
+}, []);
+}
+
+
+
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -18,7 +36,8 @@ const NewItems = () => {
             </div>
           </div>
 
-          {new Array(4).fill(0).map((_, index) => (
+          <Slider {...settings} className="hot-collections-slider">
+          {hotCollections.map((collection, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft__item">
                 <div className="author_list_pp">

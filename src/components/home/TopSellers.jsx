@@ -8,11 +8,11 @@ import AuthorImage from "../../images/author_thumbnail.jpg";
 const authors = [
   {
     name: "Monica Lucas",
-    image: author1,
+    image: AuthorImage,
   },
   {
     name: "John Smith",
-    image: author2,
+    image: AuthorImage,
   },
 ];
 
@@ -29,19 +29,19 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {authors.map((author) => (
+             {authors.map((author, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to="/author">
                      <img className="lazy pp-coll"
-  src={collection.authorImage}
-  alt={collection.name}
+src={author.image}
+alt={author.name}
 />
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">Monica Lucas</Link>
+                    <Link to="/author">{author.name}</Link>
                     <span>2.1 ETH</span>
                   </div>
                 </li>
