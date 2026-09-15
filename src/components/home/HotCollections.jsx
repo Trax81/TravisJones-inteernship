@@ -77,7 +77,7 @@ const settings = {
       <Slider {...settings} className="hot-collections-slider">
           {hotCollections.map((collection, index) => (
             
-              <div className="nft_coll">
+              <div className="nft_coll" key={index}>
                 <div className="nft_wrap">
                   <Link to="/item-details">
                     <img src={collection.nftImage} />
@@ -85,7 +85,7 @@ const settings = {
                 </div>
                 <div className="nft_coll_pp">
                   <Link to="/author">
-                    <img className="lazy pp-coll" src={collection.AuthorImage} alt="" />
+                    <img className="lazy pp-coll" src={collection.authorImage} alt="" />
                   </Link>
                   <i className="fa fa-check"></i>
                 </div>

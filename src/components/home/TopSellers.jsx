@@ -2,6 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 
+
+
+
+const authors = [
+  {
+    name: "Monica Lucas",
+    image: author1,
+  },
+  {
+    name: "John Smith",
+    image: author2,
+  },
+];
+
 const TopSellers = () => {
   return (
     <section id="section-popular" className="pb-5">
@@ -15,15 +29,14 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {new Array(12).fill(0).map((_, index) => (
+              {authors.map((author) => (
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to="/author">
-                      <img
-                        className="lazy pp-author"
-                        src={AuthorImage}
-                        alt=""
-                      />
+                     <img className="lazy pp-coll"
+  src={collection.authorImage}
+  alt={collection.name}
+/>
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
