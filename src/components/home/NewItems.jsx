@@ -1,26 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
-
-
+import React, { useEffect, useState } from "react";
 
 const NewItems = () => {
+  const [newItems, setNewItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const [newItems, setNewItems] = useState([]);
-const [loading, setLoading] = useState(true);
-async function fetchNewItems() {
-  const response = await fetch(
-    "https://us-central1-nft-cloud-functions.cloudfuntions.net/newItems"
-  );
-  const data = await response.json();
-console.log(data);
-setNewItems(data);
+  async function fetchNewItems() {
+    const response = await fetch(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
+    );
+    const data = await response.json();
 
-useEffect(() => {
-  fetchNewItems();
-}, []);
-}
+    console.log(data);
+    setNewItems(data);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchNewItems();
+  }, []);
 
 
 
@@ -37,7 +34,7 @@ useEffect(() => {
           </div>
 
           <Slider {...settings} className="hot-collections-slider">
-          {hotCollections.map((collection, index) => (
+          {newItems.map((item, index) => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft__item">
                 <div className="author_list_pp">
@@ -82,7 +79,7 @@ useEffect(() => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    <h4>Pinky Ocean</h4>
+                    {item.title}
                   </Link>
                   <div className="nft__item_price">3.08 ETH</div>
                   <div className="nft__item_like">
@@ -93,6 +90,7 @@ useEffect(() => {
               </div>
             </div>
           ))}
+          </Slider>
         </div>
       </div>
     </section>
