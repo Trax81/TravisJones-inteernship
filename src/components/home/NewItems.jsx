@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import AuthorImage from "../../images/author_thumbnail.jpg";
+import nftImage from "../../images/nftImage.jpg";
 
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
@@ -20,6 +24,29 @@ const NewItems = () => {
   }, []);
 
 
+  const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
+
+
 
 
   return (
@@ -35,7 +62,7 @@ const NewItems = () => {
 
           <Slider {...settings} className="hot-collections-slider">
           {newItems.map((item, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+            <div className="px-2" key={index}>
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link
@@ -79,12 +106,12 @@ const NewItems = () => {
                 </div>
                 <div className="nft__item_info">
                   <Link to="/item-details">
-                    {item.title}
+                   <h4> {item.title}</h4>
                   </Link>
                   <div className="nft__item_price">3.08 ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>69</span>
+                    <span>{item.code}</span>
                   </div>
                 </div>
               </div>
