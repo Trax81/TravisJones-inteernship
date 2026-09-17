@@ -12,10 +12,17 @@ const NewItems = () => {
 
   const [timeLeft, setTimeLeft] = useState(19832);
 
+    const hours = Math.floor(timeLeft / 3600);
+const minutes = Math.floor((timeLeft % 3600) / 60);
+const seconds = timeLeft % 60;
+
 useEffect(() => {
   const timer = setInterval(() => {
     setTimeLeft((prevTime) => prevTime - 1);
   }, 1000);
+
+
+
 
   return () => clearInterval(timer);
 }, []);
@@ -97,7 +104,9 @@ useEffect(() => {
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
-                <div className="de_countdown">5h 30m 32s</div>
+              <div className="de_countdown">
+             {hours}h {minutes}m {seconds}s
+             </div>
 
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">

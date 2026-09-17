@@ -2,6 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 
+  async function fetchTopSellers() {
+    const response = await fetch(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
+    );
+    const data = await response.json();
+
+    console.log(data);
+    settopSellers(data);
+    setLoading(false);
+  }
 
 
 
@@ -41,7 +51,7 @@ alt={author.name}
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">{author.name}</Link>
+                    <Link to="/author">{sellers.name}</Link>
                     <span>2.1 ETH</span>
                   </div>
                 </li>
