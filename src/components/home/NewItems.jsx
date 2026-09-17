@@ -4,10 +4,21 @@ import Slider from "react-slick";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 
+
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(19832);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  
   async function fetchNewItems() {
     const response = await fetch(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
@@ -19,9 +30,9 @@ const NewItems = () => {
     setLoading(false);
   }
 
-  useEffect(() => {
-    fetchNewItems();
-  }, []);
+
+
+
 
 
   const settings = {
@@ -49,6 +60,11 @@ const NewItems = () => {
 
 
 
+
+
+
+
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -71,7 +87,7 @@ const NewItems = () => {
                     data-bs-placement="top"
                     title="Creator: Monica Lucas"
                   >
-                    <img className="lazy" src={AuthorImage} alt="" />
+                    <img className="lazy" src={item.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -98,7 +114,7 @@ const NewItems = () => {
 
                   <Link to="/item-details">
                     <img
-                      src={nftImage}
+                     src={item.nftImage}
                       className="lazy nft__item_preview"
                       alt=""
                     />
@@ -108,10 +124,10 @@ const NewItems = () => {
                   <Link to="/item-details">
                    <h4> {item.title}</h4>
                   </Link>
-                  <div className="nft__item_price">3.08 ETH</div>
+                  <div className="nft__item_price">{item.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>{item.code}</span>
+                    <span>{item.likes}</span>
                   </div>
                 </div>
               </div>
