@@ -8,15 +8,21 @@ import nftImage from "../../images/nftImage.jpg";
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
   const [loading, setLoading] = useState(true);
+
+
   const [timeLeft, setTimeLeft] = useState(19832);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
+useEffect(() => {
+  const timer = setInterval(() => {
+    setTimeLeft((prevTime) => prevTime - 1);
+  }, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
+  return () => clearInterval(timer);
+}, []);
+
+useEffect(() => {
+  fetchNewItems();
+}, []);
 
   
   async function fetchNewItems() {
