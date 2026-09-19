@@ -44,7 +44,7 @@ const TopSellers = () => {
                     <Link to="/author">
                       <img
                         className="lazy pp-coll"
-                        src={author.image}
+                        src={topSellers.authorImage}
                         alt={author.name}
                       />
                       <i className="fa fa-check"></i>
