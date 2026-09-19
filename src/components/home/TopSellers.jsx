@@ -1,19 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
-
-  async function fetchTopSellers() {
-    const response = await fetch(
-      "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
-    );
-    const data = await response.json();
-
-    console.log(data);
-    settopSellers(data);
-    setLoading(false);
-  }
-
-
 
 const authors = [
   {
@@ -27,6 +14,18 @@ const authors = [
 ];
 
 const TopSellers = () => {
+  const [topSellers, setTopSellers] = useState();
+  const [loading, setLoading] = useState();
+  async function fetchTopSellers() {
+    const response = await fetch(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers",
+    );
+    const data = await response.json();
+
+    console.log(data);
+    setTopSellers(data);
+    setLoading(false);
+  }
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
@@ -39,14 +38,15 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-             {authors.map((author, index) => (
+              {authors.map((author, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to="/author">
-                     <img className="lazy pp-coll"
-src={author.image}
-alt={author.name}
-/>
+                      <img
+                        className="lazy pp-coll"
+                        src={author.image}
+                        alt={author.name}
+                      />
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
