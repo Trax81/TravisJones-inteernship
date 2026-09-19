@@ -51,7 +51,7 @@ alt={author.name}
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">{sellers.name}</Link>
+                    <Link to="/author">{author.name}</Link>
                     <span>2.1 ETH</span>
                   </div>
                 </li>
