@@ -9,12 +9,12 @@ import { useState, useEffect } from "react";
 const Author = () => {
   const { authorId } = useParams();
   const { id } = useParams();
-  const [Author, setAuthor] = useState([]);
+  const [author, setAuthor] = useState([]);
   const [loading, setLoading] = useState();
   async function fetchAuthor() {
-    const response = await fetch(
-      `https://us-central1-nft-cloud-functions.cloudfunctions.net/Author/${id}`,
-    );
+const response = await fetch(
+  `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
+);
     const data = await response.json();
 
     console.log(data);
@@ -25,6 +25,8 @@ const Author = () => {
   useEffect(() => {
     fetchAuthor();
   }, []);
+
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -45,15 +47,15 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <img src={AuthorImage} alt="" />
+                     <img src={author.authorImage} alt={author.authorName} />
 
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
-                          Monica Lucas
-                          <span className="profile_username">@monicaaaa</span>
+                          {author.authorName}
+                          <span className="profile_username">{author.tag}</span>
                           <span id="wallet" className="profile_wallet">
-                            UDHUHWudhwd78wdt7edb32uidbwyuidhg7wUHIFUHWewiqdj87dy7
+                            {author.address}
                           </span>
                           <button id="btn_copy" title="Copy Text">
                             Copy
@@ -66,7 +68,7 @@ const Author = () => {
                     <div className="de-flex-col">
                       <div className="profile_follower">573 followers</div>
                       <Link to="#" className="btn-main">
-                        Follow
+                       {author.followers}
                       </Link>
                     </div>
                   </div>
