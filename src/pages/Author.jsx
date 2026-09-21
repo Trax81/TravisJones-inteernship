@@ -47,7 +47,7 @@ const response = await fetch(
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                     <img src={author.authorImage} alt={author.authorName} />
+                     <img src={author.authorImage} alt={author.authorName}/>
 
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
@@ -66,9 +66,9 @@ const response = await fetch(
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">573 followers</div>
+                      <div className="profile_follower">{author.followers}</div>
                       <Link to="#" className="btn-main">
-                       {author.followers}
+                       Follow
                       </Link>
                     </div>
                   </div>
@@ -77,7 +77,10 @@ const response = await fetch(
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems />
+                  <AuthorItems 
+                  nftCollection={author.nftCollection}
+                  authorImage={author.authorImage}
+                  />
                 </div>
               </div>
             </div>
