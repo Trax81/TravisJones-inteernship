@@ -47,7 +47,7 @@ useEffect(()=> {
               {topSellers.map((author, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
-                    <Link to="/author">
+                    <Link to={`/author/${author.id}`}>
                       <img
                         className="lazy pp-coll"
                         src={author.authorImage}
