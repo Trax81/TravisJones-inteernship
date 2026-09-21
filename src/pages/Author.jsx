@@ -4,15 +4,15 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-
-const author = () => {
+const Author = () => {
+  const { id } = useParams();
   const [Author, setAuthor] = useState([]);
   const [loading, setLoading] = useState();
   async function fetchAuthor() {
     const response = await fetch(
-      "https://us-central1-nft-cloud-functions.cloudfunctions.net/Author",
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/Author/${id}`,
     );
     const data = await response.json();
 
@@ -20,23 +20,11 @@ const author = () => {
     setAuthor(data);
     setLoading(false);
   }
-}
 
-useEffect(()=> {
-  fetchAuthor()
-}, [])
-
-
-
-
-
-
-
-
-const Author = () => {
-  const { id } = useParams()
+  useEffect(() => {
+    fetchAuthor();
+  }, []);
   return (
-
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
