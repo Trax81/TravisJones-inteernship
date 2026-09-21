@@ -4,6 +4,34 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
+
+const author = () => {
+  const [Author, setAuthor] = useState([]);
+  const [loading, setLoading] = useState();
+  async function fetchAuthor() {
+    const response = await fetch(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/Author",
+    );
+    const data = await response.json();
+
+    console.log(data);
+    setAuthor(data);
+    setLoading(false);
+  }
+}
+
+useEffect(()=> {
+  fetchAuthor()
+}, [])
+
+
+
+
+
+
+
 
 const Author = () => {
   const { id } = useParams()
