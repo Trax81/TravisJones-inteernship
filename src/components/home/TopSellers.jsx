@@ -14,18 +14,24 @@ const authors = [
 ];
 
 const TopSellers = () => {
-  const [topSellers, setTopSellers] = useState();
+  const [topSellers, setTopSellers] = useState([]);
   const [loading, setLoading] = useState();
   async function fetchTopSellers() {
     const response = await fetch(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers",
     );
-    const data = await response.json();
+    const { data } = await response.json();
 
     console.log(data);
     setTopSellers(data);
     setLoading(false);
   }
+
+useEffect(()=> {
+  fetchTopSellers()
+}, [])
+
+
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
@@ -38,13 +44,13 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {authors.map((author, index) => (
+              {topSellers.map((author, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to="/author">
                       <img
                         className="lazy pp-coll"
-                        src={author.image}
+                        src={author.authorImage}
                         alt={author.name}
                       />
                       <i className="fa fa-check"></i>
