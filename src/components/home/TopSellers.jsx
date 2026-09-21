@@ -20,7 +20,7 @@ const TopSellers = () => {
     const response = await fetch(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers",
     );
-    const { data } = await response.json();
+    const data = await response.json();
 
     console.log(data);
     setTopSellers(data);
