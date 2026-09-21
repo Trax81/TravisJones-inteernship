@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Author = () => {
+  const { authorId } = useParams();
   const { id } = useParams();
   const [Author, setAuthor] = useState([]);
   const [loading, setLoading] = useState();
