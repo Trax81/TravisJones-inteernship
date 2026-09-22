@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+
 
 const AuthorItems = ({ nftCollection = [], authorImage }) => {
   return (
@@ -13,8 +12,8 @@ const AuthorItems = ({ nftCollection = [], authorImage }) => {
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to="">
-                    <img className="lazy" src={AuthorImage} alt="" />
-                    <i className="fa fa-check"></i>
+                    <img className="lazy" src={authorImage} alt="" />
+                   <i className="fa fa-check"></i>
                   </Link>
                 </div>
                 <div className="nft__item_wrap">
@@ -36,13 +35,16 @@ const AuthorItems = ({ nftCollection = [], authorImage }) => {
                     </div>
                   </div>
                   <Link to="/item-details">
-                  <img className="lazy" src={authorImage} alt="" />
+                  
+                  <img
+                  className="lazy nft__item_preview"
+                  src={item.nftImage}
+                  alt={item.title}
+                  />
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to="/item-details">
-                    <h4>{item.title}</h4>
-                  </Link>
+
                   <div className="nft__item_price">{item.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
