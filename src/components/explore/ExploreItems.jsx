@@ -1,7 +1,30 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import React, { useEffect, useState } from "react";
+
+
+const ExploreItems = () => {
+const [exploreItems, setExploreItems] = useState([]);
+const [loading, setLoading] = useState(true);
+async function fetchExploreItems() {
+  const response = await fetch(
+    "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
+  );
+  const data = await response.json();
+console.log(data);
+setExploreItems(data);
+
+  
+}
+
+useEffect(() => {
+  fetchExploreItems();
+}, []);
+
+
+
 
 const ExploreItems = () => {
   return (
@@ -76,5 +99,7 @@ const ExploreItems = () => {
     </>
   );
 };
+
+}
 
 export default ExploreItems;
