@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 
 const ExploreItems = () => {
+  const [itemCount, setItemCount] = useState(8);
 const [exploreItems, setExploreItems] = useState([]);
 const [loading, setLoading] = useState(true);
 async function fetchExploreItems() {
@@ -37,7 +38,7 @@ useEffect(() => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-      {exploreItems.map((item, index) => (
+      {exploreItems.slice(0, itemCount).map((item, index) => (
         <div
           key={index}
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
@@ -46,11 +47,11 @@ useEffect(() => {
           <div className="nft__item">
             <div className="author_list_pp">
               <Link
-                to="/author"
+                to={`/author/${item.authorId}`}
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
               >
-                <img className="lazy" src={item.nftImage} alt="" />
+                <img className="lazy" src={item.authorImage} to={`/author/${item.authorId}`} alt="" />
                 <i className="fa fa-check"></i>
               </Link>
             </div>
@@ -92,7 +93,7 @@ useEffect(() => {
         </div>
       ))}
       <div className="col-md-12 text-center">
-        <Link to="" id="loadmore" className="btn-main lead">
+        <Link to="" id="loadmore" className="btn-main lead" onClick={() => setItemCount(itemCount + 4)}>
           Load more
         </Link>
       </div>

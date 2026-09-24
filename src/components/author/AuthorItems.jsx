@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
+
 const AuthorItems = ({ nftCollection = [], authorImage }) => {
   return (
     <div className="de_tab_content">
