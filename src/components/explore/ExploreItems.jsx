@@ -26,6 +26,25 @@ useEffect(() => {
 
 
 
+  const [timeLeft, setTimeLeft] = useState(19832);
+
+    const hours = Math.floor(timeLeft / 3600);
+const minutes = Math.floor((timeLeft % 3600) / 60);
+const seconds = timeLeft % 60;
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    setTimeLeft((prevTime) => prevTime - 1);
+  }, 1000);
+
+
+
+
+  return () => clearInterval(timer);
+}, []);
+
+
+
 
 
   return (
@@ -51,7 +70,7 @@ useEffect(() => {
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
               >
-                <img className="lazy" src={item.authorImage} to={`/author/${item.authorId}`} alt="" />
+                <img className="lazy" src={item.authorImage}  alt="" />
                 <i className="fa fa-check"></i>
               </Link>
             </div>
