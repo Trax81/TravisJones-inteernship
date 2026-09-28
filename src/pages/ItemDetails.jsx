@@ -11,6 +11,21 @@ import { useParams } from "react-router-dom";
 
 const ItemDetails = () => {
 const { id } = useParams();
+const [item, setItem] = useState({});
+
+async function fetchItem() {
+  const response = await fetch(
+    https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails/${id}
+  );
+  const data = await response.json();
+  console.log(data);
+  setItem(data)
+}
+
+useEffect(() => {
+  fetchItem();
+
+}, [id]);
 
 
 
