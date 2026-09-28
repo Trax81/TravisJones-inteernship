@@ -5,7 +5,15 @@ import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import { useParams } from "react-router-dom";
 
+
+
+
+
 const ItemDetails = () => {
+const { id } = useParams();
+
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
