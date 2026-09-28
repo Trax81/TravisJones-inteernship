@@ -15,11 +15,17 @@ const [item, setItem] = useState({});
 
 async function fetchItem() {
   const response = await fetch(
-    https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails/${id}
+    "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
   );
+
   const data = await response.json();
-  console.log(data);
-  setItem(data)
+
+  const selectedItem = data.find(
+    (item) => item.id === Number(id)
+  );
+
+  console.log(selectedItem);
+  setItem(selectedItem);
 }
 
 useEffect(() => {
