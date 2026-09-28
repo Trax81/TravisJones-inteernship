@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
@@ -18,7 +18,7 @@ const ItemDetails = () => {
             <div className="row">
               <div className="col-md-6 text-center">
                 <img
-                  src={nftImage}
+                  src={item.authorImage}
                   className="img-fluid img-rounded mb-sm-30 nft-image"
                   alt=""
                 />
