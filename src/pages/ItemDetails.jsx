@@ -48,14 +48,14 @@ useEffect(() => {
             <div className="row">
               <div className="col-md-6 text-center">
                 <img
-                  src={item.authorImage}
+                  src={item.nftImage}
                   className="img-fluid img-rounded mb-sm-30 nft-image"
                   alt=""
                 />
               </div>
               <div className="col-md-6">
                 <div className="item_info">
-                  <h2>Rainbow Style #194</h2>
+                  <h2>{item.title}</h2>
 
                   <div className="item_info_counts">
                     <div className="item_info_views">
@@ -78,7 +78,7 @@ useEffect(() => {
                       <div className="item_author">
                         <div className="author_list_pp">
                           <Link to="/author">
-                            <img className="lazy" src={AuthorImage} alt="" />
+                            <img className="lazy" src={item.authorImage} alt="" />
                             <i className="fa fa-check"></i>
                           </Link>
                         </div>
@@ -94,13 +94,13 @@ useEffect(() => {
                       <h6>Creator</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to="/author">
-                            <img className="lazy" src={AuthorImage} alt="" />
+                          <Link to={`/author/${item.authorImage}`}>
+                            <img className="lazy" src={item.authorImage} alt="" />
                             <i className="fa fa-check"></i>
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to="/author">Monica Lucas</Link>
+                          <Link to={`/author/${item.authorId}`}>{item.authorName}</Link>
                         </div>
                       </div>
                     </div>
