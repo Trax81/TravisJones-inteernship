@@ -5,7 +5,11 @@ import Landing from "../components/home/Landing";
 import LandingIntro from "../components/home/LandingIntro";
 import NewItems from "../components/home/NewItems";
 import TopSellers from "../components/home/TopSellers";
+
 import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 
 
@@ -25,10 +29,10 @@ const Home = () => {
         <div id="top"></div>
         <div data-aos="fade-up"><Landing /></div>
         <LandingIntro />
-        <HotCollections />
-        <NewItems />
-        <TopSellers />
-        <BrowseByCategory />
+        <div className="animated.bounceIn" data-aos="fade-up-right"><HotCollections /></div>
+        <div className="bounce" data-aos="fade-up-right"><NewItems /></div>
+        <div className="swing" data-aos="fade-up-right"><TopSellers /></div>
+        <div className="swing"><BrowseByCategory /></div>
       </div>
     </div>
   );
