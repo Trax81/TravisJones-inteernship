@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
 
-const authors = [
-  {
-    name: "Monica Lucas",
-    image: AuthorImage,
-  },
-  {
-    name: "John Smith",
-    image: AuthorImage,
-  },
-];
+
 
 const TopSellers = () => {
   const [topSellers, setTopSellers] = useState([]);
-  const [loading, setLoading] = useState();
+  const [, setLoading] = useState();
   async function fetchTopSellers() {
     const response = await fetch(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers",

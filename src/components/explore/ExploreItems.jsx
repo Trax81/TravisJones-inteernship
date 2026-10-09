@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 const ExploreItems = () => {
   const [itemCount, setItemCount] = useState(8);
 const [exploreItems, setExploreItems] = useState([]);
-const [loading, setLoading] = useState(true);
 async function fetchExploreItems() {
   const response = await fetch(
     "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
@@ -14,7 +13,6 @@ async function fetchExploreItems() {
   const data = await response.json();
 console.log(data);
 setExploreItems(data);
-setLoading(false);
   
 }
 

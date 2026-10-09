@@ -1,9 +1,6 @@
 
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import React, { useEffect, useState } from "react";
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Slider from "react-slick";
@@ -18,7 +15,7 @@ import "./HotCollections.css";
 
 const HotCollections = () => {
 const [hotCollections, setHotCollections] = useState([]);
-const [loading, setLoading] = useState(true);
+
 async function fetchHotCollections() {
   const response = await fetch(
     "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
@@ -80,7 +77,7 @@ const settings = {
               <div className="nft_coll" key={index}>
                 <div className="nft_wrap">
                   <Link to="/item-details">
-                    <img src={collection.nftImage} />
+                    <img src={collection.nftImage} alt="NFT collection" />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">

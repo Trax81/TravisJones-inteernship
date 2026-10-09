@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
-import nftImage from "../images/nftImage.jpg";
 import { useParams } from "react-router-dom";
 
 
@@ -13,24 +11,23 @@ const ItemDetails = () => {
 const { id } = useParams();
 const [item, setItem] = useState({});
 
-async function fetchItem() {
-  const response = await fetch(
-    "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
-  );
-
-  const data = await response.json();
-
-  const selectedItem = data.find(
-    (item) => item.id === Number(id)
-  );
-
-  console.log(selectedItem);
-  setItem(selectedItem);
-}
-
 useEffect(() => {
-  fetchItem();
+  async function fetchItem() {
+    const response = await fetch(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
+    );
 
+    const data = await response.json();
+
+    const selectedItem = data.find(
+      (item) => item.id === Number(id)
+    );
+
+    console.log(selectedItem);
+    setItem(selectedItem);
+  }
+
+  fetchItem();
 }, [id]);
 
 
