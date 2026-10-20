@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
+
 
 
 const NewItems = () => {
   const [newItems, setNewItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
 
 
   const [timeLeft, setTimeLeft] = useState(19832);
@@ -40,7 +39,6 @@ useEffect(() => {
 
     console.log(data);
     setNewItems(data);
-    setLoading(false);
   }
 
 
@@ -95,7 +93,7 @@ useEffect(() => {
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link
-                    to="/author"
+                    to={`/author/${item.authorId}`}
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     title="Creator: Monica Lucas"
